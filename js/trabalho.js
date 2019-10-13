@@ -18,7 +18,7 @@ function Update(ID, texto){
     document.getElementById(ID).innerHTML = texto;
     if((jogador.vida / jogador.vidamaxima) <= 1) {
         document.getElementById("barraVida").style.width = (jogador.vida / jogador.vidamaxima)*100 + "%";
-        document.getElementById("barraVida").innerHTML = Math.trunc((jogador.vida / jogador.vidamaxima)*100) + "% " + jogador.vida + "/" + jogador.vidamaxima;
+        document.getElementById("barraVida").innerHTML = "Vida: " + Math.trunc((jogador.vida / jogador.vidamaxima)*100) + "% " + jogador.vida + "/" + jogador.vidamaxima;
     jogador.vida++;
     }
     MaisCW();
@@ -34,5 +34,6 @@ function Contratar(){
 
 function Comer(){
     jogador.vidamaxima += Math.trunc(candyHeart / 20);
+    jogador.forca += Math.trunc(candyHeart / 50);
     candyHeart = 0;
 }
