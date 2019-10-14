@@ -1,6 +1,7 @@
 var candyHeart = 0;
 var tempo = 1000;
 var soldados = 0;
+var plusCandy = 1;
 
 var jogador = {
     forca: 0,
@@ -8,27 +9,28 @@ var jogador = {
     vidamaxima: 100,
 };
 
-function MaisCW(){
-    setTimeout(function(){Update("CW", "Cora&#231&#245es doces: " + candyHeart)}, tempo);
-    if(candyHeart > 20) document.getElementById("contratar").style.visibility = "visible";
+function Update(){
+    setTimeout(function(){MaisCW()}, tempo);
+    if(candyHeart >= 20) document.getElementById("contratar").style.visibility = "visible";
 }
 
-function Update(ID, texto){
-    candyHeart++;
-    document.getElementById(ID).innerHTML = texto;
+function MaisCW(){
+    candyHeart += plusCandy;
+    document.getElementById("CW").innerHTML = "Cora&#231&#245es doces: " + Math.trunc(candyHeart) + " | Cora&#231&#245es doces por segundo: " + plusCandy;
     if((jogador.vida / jogador.vidamaxima) <= 1) {
         document.getElementById("barraVida").style.width = (jogador.vida / jogador.vidamaxima)*100 + "%";
         document.getElementById("barraVida").innerHTML = "Vida: " + Math.trunc((jogador.vida / jogador.vidamaxima)*100) + "% " + jogador.vida + "/" + jogador.vidamaxima;
     jogador.vida++;
     }
-    MaisCW();
+    Update();
 }
 
 function Contratar(){
-    if(candyHeart > 20){
+    if((candyHeart > 20) && (plusCandy < 100)){
         candyHeart -=20
         soldados++;
         document.getElementById("soldados").innerHTML = "Soldados: " + soldados;
+        plusCandy++;
     }
 }
 
