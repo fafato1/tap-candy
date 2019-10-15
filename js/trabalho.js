@@ -4,6 +4,10 @@ var soldados = 0;
 var plusCandy = 1;
 var quantidadeParaCurar = 4;
 
+var machado = false;
+var faca = false;
+var espada = false
+
 var jogador = {
     forca : 0,
     velAtq: 0,
@@ -85,27 +89,33 @@ function Morrer(){
 function ComprarEspada(_teste) {
     switch (_teste) {
         case 1:
-                if(candyHeart >= 200){
+                if((candyHeart >= 200) && (faca == false)){
                     jogador.forca = 10;
                     jogador.velAtq = 1000
+                    candyHeart -= 200;
+                    faca = true;
                 }
                 else{
                     alert("Voce nao tem coracoes doces o suficiente, voce precisa de 200")
                 }
             break;
         case 2:
-                if(candyHeart >= 600){
+                if((candyHeart >= 600) && (espada == false)){
                     jogador.forca = 20;
                     jogador.velAtq = 1300
+                    candyHeart -= 600;
+                    espada = true;
                 }
                 else{
                     alert("Voce nao tem coracoes doces o suficiente, voce precisa de 600")
                 }
             break;
         case 3:
-                if(candyHeart >= 1200){
+                if(candyHeart >= 1200 && (machado == false)){
                     jogador.forca = 40;
-                    jogador.velAtq = 900
+                    jogador.velAtq = 900;
+                    candyHeart -= 1200;
+                    machado = true;
                 }
                 else{
                     alert("Voce nao tem coracoes doces o suficiente, voce precisa de 1200")
