@@ -89,17 +89,26 @@ function ComprarEspada(_teste) {
                     jogador.forca = 10;
                     jogador.velAtq = 1000
                 }
+                else{
+                    alert("Voce nao tem coracoes doces o suficiente, voce precisa de 200")
+                }
             break;
         case 2:
                 if(candyHeart >= 600){
                     jogador.forca = 20;
                     jogador.velAtq = 1300
                 }
+                else{
+                    alert("Voce nao tem coracoes doces o suficiente, voce precisa de 600")
+                }
             break;
         case 3:
-                if(candyHeart >= 900){
+                if(candyHeart >= 1200){
                     jogador.forca = 40;
                     jogador.velAtq = 900
+                }
+                else{
+                    alert("Voce nao tem coracoes doces o suficiente, voce precisa de 1200")
                 }
             break
         default:
