@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tap Candy</title>
     <meta name="description" content="Um jogo simples idle, para estudar">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/sticky-menu.css" rel="stylesheet">
 </head>
@@ -52,6 +53,16 @@
                     <button onclick="Comer()" id="comer">Comer Cora&#231&#245es</button>
                     <button style="visibility: hidden;" onclick="Contratar()" id="contratar">Contratar</button>
                     <button onclick="Curar()">Comer para curar</button>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="align-content: left;">
+                          Comprar Arma
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                          <button onclick="ComprarEspada(1)" class="dropdown-item" type="button">Comprar Faca</button>
+                          <button onclick="ComprarEspada(2)" class="dropdown-item" type="button">Comprar Espada</button>
+                          <button onclick="ComprarEspada(3)" class="dropdown-item" type="button">Comprar Machado de guerra gigante</button>
+                        </div>
+                      </div>
 					<p>Design do template by: <a href="https://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a></p>
                     <p>&nbsp;</p>
                 </div>

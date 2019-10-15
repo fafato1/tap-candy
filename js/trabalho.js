@@ -23,11 +23,6 @@ var ajudante2 = {
     vidamaxima: 100,
 };
 
-var espada = {
-    dano  : 0,
-    velAtq: 0,
-}
-
 
 var inimigo = {
     
@@ -84,5 +79,30 @@ function Morrer(){
     }
     if(ajudante2.vida <= 0){
         
+    }
+}
+
+function ComprarEspada(_teste) {
+    switch (_teste) {
+        case 1:
+                if(candyHeart >= 200){
+                    jogador.forca = 10;
+                    jogador.velAtq = 1000
+                }
+            break;
+        case 2:
+                if(candyHeart >= 600){
+                    jogador.forca = 20;
+                    jogador.velAtq = 1300
+                }
+            break;
+        case 3:
+                if(candyHeart >= 900){
+                    jogador.forca = 40;
+                    jogador.velAtq = 900
+                }
+            break
+        default:
+            break;
     }
 }
