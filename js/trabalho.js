@@ -11,15 +11,15 @@ var jogador = {
     vidamaxima: 100,
 };
 var ajudante1 = {
-    forca : 0,
-    velAtq: 0,
-    vida  : 1,
+    forca : 10,
+    velAtq: 700,
+    vida  : 100,
     vidamaxima: 100,
 };
 var ajudante2 = {
-    forca : 0,
-    velAtq: 0,
-    vida  : 1,
+    forca : 20,
+    velAtq: 130,
+    vida  : 100,
     vidamaxima: 100,
 };
 
