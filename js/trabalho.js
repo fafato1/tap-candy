@@ -3,6 +3,7 @@ var tempo = 1000;
 var soldados = 0;
 var plusCandy = 1;
 var quantidadeParaCurar = 4;
+var contratarValor = 10;
 
 var machado = false;
 var faca = false;
@@ -34,7 +35,7 @@ var inimigo = {
 
 function Update(){
     setTimeout(function(){MaisCW()}, tempo);
-    if(candyHeart >= 20) document.getElementById("contratar").style.visibility = "visible";
+    if(candyHeart >= contratarValor) document.getElementById("contratar").style.visibility = "visible";
 }
 
 function MaisCW(){
@@ -52,11 +53,13 @@ function MaisCW(){
 }
 
 function Contratar(){
-    if((candyHeart > 20) && (plusCandy < 500)){
-        candyHeart -=20
+    if((candyHeart > contratarValor) && (plusCandy < 500)){
+        candyHeart -= contratarValor;
         soldados++;
-        document.getElementById("soldados").innerHTML = "Soldados: " + soldados;
         plusCandy++;
+        Math.trunc(contratarValor *= 1.2);
+        document.getElementById("soldados").innerHTML = "Soldados: " + soldados;
+        document.getElementById("PrecoDeContrato").innerHTML = contratarValor + " Para contratar mais um soldado";
     }
 }
 
@@ -89,39 +92,44 @@ function Morrer(){
 function ComprarEspada(_teste) {
     switch (_teste) {
         case 1:
-                if((candyHeart >= 200) && (faca == false)){
+                if((candyHeart >= 800) && (faca == false)){
                     jogador.forca = 10;
                     jogador.velAtq = 1000
                     candyHeart -= 200;
                     faca = true;
+                    document.getElementById("faca").innerHTML = "faca &#9745"
                 }
                 else{
-                    alert("Voce nao tem coracoes doces o suficiente, voce precisa de 200")
+                    alert("Voce nao tem coracoes doces o suficiente, voce precisa de 800")
                 }
             break;
         case 2:
-                if((candyHeart >= 600) && (espada == false)){
+                if((candyHeart >= 1600) && (espada == false)){
                     jogador.forca = 20;
                     jogador.velAtq = 1300
                     candyHeart -= 600;
                     espada = true;
                 }
                 else{
-                    alert("Voce nao tem coracoes doces o suficiente, voce precisa de 600")
+                    alert("Voce nao tem coracoes doces o suficiente, voce precisa de 1600")
                 }
             break;
         case 3:
-                if(candyHeart >= 1200 && (machado == false)){
+                if(candyHeart >= 3200 && (machado == false)){
                     jogador.forca = 40;
                     jogador.velAtq = 900;
                     candyHeart -= 1200;
                     machado = true;
                 }
                 else{
-                    alert("Voce nao tem coracoes doces o suficiente, voce precisa de 1200")
+                    alert("Voce nao tem coracoes doces o suficiente, voce precisa de 3200")
                 }
             break
         default:
             break;
     }
+}
+
+function InimigoAtacar(){
+    
 }
