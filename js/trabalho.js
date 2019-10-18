@@ -155,41 +155,46 @@ function ComprarEspada(_teste) {
 }
 
 function InimigoAtacar(){
-    inimigoataque = setInterval(function(){ jogador.vida -= inimigo.forca; ajudante1 -= inimigo.forca; ajudante2 -= inimigo.forca; InimigoMorrer}, inimigo.velAtq);
+    inimigoataque = setInterval(function(){ jogador.vida -= inimigo.forca; ajudante1 -= inimigo.forca; ajudante2 -= inimigo.forca; InimigoMorrer()}, inimigo.velAtq);
 
 }
 
 function InimigoMorrer() {
     if(inimigo.vida <= 0){
-        CriarInimigo();
         candyHeart += Math.trunc(inimigo.vidamaxima / 5);
+
+        CriarInimigo();
         clearInterval(inimigoataque);
         lutando = false;
+        document.getElementById("combate").style.visibility = "hidden";
+        document.getElementById("barraVidainimigo").style.visibility = "hidden";
     }
 }
 
 function CriarInimigo() {
-    if((eboss % 4) === 0){
-        document.getElementById("boss").style.visibility = "visible";
-        naoboss.forca = inimigo.forca
-        naoboss.vidamaxima = inimigo.vidamaxima;
+    if(eboss > 3){
+        if(eboss % 4 == 0){
+            document.getElementById("boss").style.visibility = "visible";
+            naoboss.forca = inimigo.forca
+            naoboss.vidamaxima = inimigo.vidamaxima;
 
-        Math.trunc(inimigo.vidamaxima *= 3);
-        inimigo.vida = inimigo.vidamaxima;
-        Math.trunc(inimigo.forca *= 2);
-        
-        eboss++;
-        recenteboss = true;
+            Math.trunc(inimigo.vidamaxima *= 3);
+            inimigo.vida = inimigo.vidamaxima;
+            Math.trunc(inimigo.forca *= 2);
+            
+            eboss++;
+            recenteboss = true;
 
-    }
-    else if(recenteboss == true){
-        document.getElementById("boss").style.visibility = "hidden";
-        Math.trunc(inimigo.vidamaxima = naoboss.vidamaxima * 1.2);
-        Math.trunc(inimigo.forca = naoboss.forca * 1.1);
-        inimigo.vida = inimigo.vidamaxima;
-        
-        eboss++;
-        recenteboss = false;
+        }
+        else if(recenteboss == true){
+            document.getElementById("boss").style.visibility = "hidden";
+            Math.trunc(inimigo.vidamaxima = naoboss.vidamaxima * 1.2);
+            Math.trunc(inimigo.forca = naoboss.forca * 1.1);
+            inimigo.vida = inimigo.vidamaxima;
+            
+            eboss++;
+            recenteboss = false;
+        }
     }
     else{
         Math.trunc(inimigo.forca *= 1.1);
@@ -202,8 +207,8 @@ function CriarInimigo() {
 
 function ClickAtaque() {
     var ataque = jogador.forca + ajudante1.forca + ajudante2.forca;
-    if((lutando == true) && (inimigo.vida > 1)){
-        Number(inimigo.vida = inimigo.vida - ataque);
+    if(lutando == true){
+        inimigo.vida = inimigo.vida - ataque;
 
     }
     else if(inimigo.vida < 0){
