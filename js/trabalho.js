@@ -49,6 +49,8 @@ function Update(){
     setTimeout(function(){MaisCW()}, tempo);
     if(candyHeart >= contratarValor) document.getElementById("contratar").style.visibility = "visible";
     if(faca === true) document.getElementById("lutar").style.visibility = "visible";
+    document.getElementById("barraVidainimigo").style.width = (inimigo.vida / inimigo.vidamaxima)*100 + "%";
+    document.getElementById("barraVidainimigo").innerHTML = "Vida do inimigo: " + Math.trunc((inimigo.vida / inimigo.vidamaxima)*100) + "% " + inimigo.vida + "/" + inimigo.vidamaxima;
 }
 
 function MaisCW(){
@@ -61,7 +63,7 @@ function MaisCW(){
     }
     else if(jogador.vida <= 0){
         document.getElementById("barraVida").style.width = 0 + "%";
-        document.getElementById("barraVida").innerHTML = "Sua vida: " + Math.trunc((jogador.vida / jogador.vidamaxima)*100) + "% " + 0 + "/" + jogador.vidamaxima;
+        document.getElementById("barraVida").innerHTML = "Sua vida: 0  %  0/" + jogador.vidamaxima;
     }
     Update();
     Morrer();
@@ -80,12 +82,12 @@ function Contratar(){
 
 function Comer(){
     jogador.vidamaxima += Math.trunc(candyHeart / 20);
-    jogador.forca += Math.trunc(candyHeart / 50);
+    //jogador.forca += Math.trunc(candyHeart / 50);
     candyHeart = 0;
 }
 
 function Curar(){
-    if((jogador.vida / jogador.vidamaxima) < 1){
+    if(((jogador.vida / jogador.vidamaxima) < 1) && (candyHeart >= quantidadeParaCurar)){
         candyHeart -= quantidadeParaCurar;
         jogador.vida = jogador.vidamaxima;
         quantidadeParaCurar *= 4;
@@ -161,13 +163,12 @@ function InimigoMorrer() {
     if(inimigo.vida <= 0){
         CriarInimigo();
         candyHeart += Math.trunc(inimigo.vidamaxima / 5);
-        lutando = false;
         clearInterval(inimigoataque);
+        lutando = false;
     }
 }
 
 function CriarInimigo() {
-
     if((eboss % 4) === 0){
         document.getElementById("boss").style.visibility = "visible";
         naoboss.forca = inimigo.forca
@@ -200,9 +201,13 @@ function CriarInimigo() {
 }
 
 function ClickAtaque() {
-    if(lutando === true){
-        var ataque = jogador.forca + ajudante1.forca + ajudante2.forca;
-        inimigo.vida -= ataque;
+    var ataque = jogador.forca + ajudante1.forca + ajudante2.forca;
+    if((lutando == true) && (inimigo.vida > 1)){
+        Number(inimigo.vida = inimigo.vida - ataque);
+
+    }
+    else if(inimigo.vida < 0){
+        InimigoMorrer();
     }
 }
 
