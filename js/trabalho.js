@@ -109,16 +109,16 @@ function Morrer(){
         jogador.forca = 0;
         jogador.vida = 50;
 
+        clearInterval(inimigoataque);
         var lutando = false;
         var machado = false;
         var faca = false;
         var espada = false
-        clearInterval(inimigoataque);
         EsconderInimigo();
     }
 }
 
-function ComprarEspada(_teste) {
+function ComprarArma(_teste) {
     switch (_teste) {
         case 1:
                 if((candyHeart >= 800) && (faca == false)){
@@ -171,10 +171,11 @@ function InimigoMorrer() {
         candyHeart += Math.trunc(inimigo.vidamaxima / 5);
 
         clearInterval(inimigoataque);
-        CriarInimigo();
         lutando = false;
+        CriarInimigo();
         EsconderInimigo();
         eboss++;
+        document.getElementById("contadorRound").innerHTML = "Round: " + eboss;
     }
 }
 function EsconderInimigo() {
@@ -185,9 +186,10 @@ function EsconderInimigo() {
 function CriarInimigo() {
     if((eboss % 10 == 0) && (eboss % 30 != 0)){
         document.getElementById("boss").style.visibility = "visible";
-        document.getElementById("boss").innerHTML 
+        document.getElementById("boss").innerHTML = "SemiBoss";
     }
     else if(eboss % 30 == 0){
+        document.getElementById("boss").innerHTML = "Boss";
         document.getElementById("boss").style.visibility = "visible";
         naoboss.forca = inimigo.forca
         naoboss.vidamaxima = inimigo.vidamaxima;
@@ -209,6 +211,7 @@ function CriarInimigo() {
     }
     
     else{
+        document.getElementById("boss").style.visibility = "hidden";
         Math.trunc(inimigo.forca *= 1.1);
         Math.trunc(inimigo.vidamaxima *= 1.2);
         inimigo.vida = inimigo.vidamaxima;

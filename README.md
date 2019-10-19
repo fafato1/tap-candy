@@ -1,6 +1,6 @@
 # Tap-Candy
  
-## Jogo sendo feito para trabalho de graduação em Desenvolvimento de jogo da UnP
+## Jogo sendo feito para trabalho de graduação em Desenvolvimento de jogos da UnP
 
 Contratar soldados aumenta a sua produção
 
