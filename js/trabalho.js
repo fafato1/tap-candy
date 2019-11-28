@@ -247,42 +247,41 @@ function CriarInimigo() {
 
             estagio++;
         }
-        else if((estagio == 4) && (eboss == 34)){
-            document.getElementById("boss").innerHTML = "Boss";
-            document.getElementById("boss").style.visibility = "visible";
-            naoboss.forca = inimigo.forca
-            naoboss.vidamaxima = inimigo.vidamaxima;
+    }
+    else if((estagio == 4) && (eboss == 34)){
+        document.getElementById("boss").innerHTML = "Boss";
+        document.getElementById("boss").style.visibility = "visible";
+        naoboss.forca = inimigo.forca
+        naoboss.vidamaxima = inimigo.vidamaxima;
 
-            Math.trunc(inimigo.vidamaxima *= 3);
-            inimigo.vida = inimigo.vidamaxima;
-            Math.trunc(inimigo.forca *= 2);
+        Math.trunc(inimigo.vidamaxima *= 3);
+        inimigo.vida = inimigo.vidamaxima;
+        Math.trunc(inimigo.forca *= 2);
                 
             
-            recenteboss = true;
-        }
-        else if(recenteboss == true){
-            document.getElementById("boss").style.visibility = "hidden";
-            Math.trunc(inimigo.vidamaxima = naoboss.vidamaxima * 1.2);
-            Math.trunc(inimigo.forca = naoboss.forca * 1.1);
-            inimigo.vida = inimigo.vidamaxima;
+        recenteboss = true;
+    }
+    else if(recenteboss == true){
+        document.getElementById("boss").style.visibility = "hidden";
+        Math.trunc(inimigo.vidamaxima = naoboss.vidamaxima * 1.2);
+        Math.trunc(inimigo.forca = naoboss.forca * 1.1);
+        inimigo.vida = inimigo.vidamaxima;
             
-            recenteboss = false;
-        }
-        else{
-            document.getElementById("boss").style.visibility = "hidden";
-            Math.trunc(inimigo.forca *= 1.1);
-            Math.trunc(inimigo.vidamaxima *= 1.2);
-            inimigo.vida = inimigo.vidamaxima;
-
-        }
+        recenteboss = false;
+    }
+    else{
+        document.getElementById("boss").style.visibility = "hidden";
+        Math.trunc(inimigo.forca *= 1.1);
+        Math.trunc(inimigo.vidamaxima *= 1.2);
+        inimigo.vida = inimigo.vidamaxima;
 
     }
+    
 }
 
 
 
 function ClickAtaque() {
-    var ataque = jogador.forca + ajudante1.forca + ajudante2.forca;
     if(lutando == true){
         inimigo.vida = inimigo.vida - (jogador.forca + ajudante1.forca + ajudante2.forca);
 
