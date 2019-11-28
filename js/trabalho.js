@@ -152,7 +152,7 @@ function Morrer(){
 function ComprarArma(_teste) {
     switch (_teste) {
         case 1:
-                if((candyHeart >= 800) && (faca == false)){
+                if((candyHeart >= 200) && (faca == false)){
                     jogador.forca = 10;
                     jogador.velAtq = 1000
                     candyHeart -= 200;
@@ -167,7 +167,7 @@ function ComprarArma(_teste) {
                 }
             break;
         case 2:
-                if((candyHeart >= 1600) && (espada == false)){
+                if((candyHeart >= 600) && (espada == false)){
                     jogador.forca = 20;
                     jogador.velAtq = 1000
                     candyHeart -= 600;
@@ -182,7 +182,7 @@ function ComprarArma(_teste) {
                 }
             break;
         case 3:
-                if(candyHeart >= 3200 && (machado == false)){
+                if(candyHeart >= 1200 && (machado == false)){
                     jogador.forca = 40;
                     jogador.velAtq = 1000;
                     candyHeart -= 1200;
